@@ -399,3 +399,107 @@ body {
   font-family: 'Orbitron';
   letter-spacing: 1px;
 }
+
+/* --- CONNECTED NODES MODULE --- */
+.nodes-wrapper {
+  margin-bottom: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nodes-header {
+  padding: 15px 0;
+  cursor: pointer;
+  font-family: 'Orbitron';
+  font-size: 12px;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  transition: 0.3s;
+  letter-spacing: 1px;
+}
+
+.nodes-header:hover {
+  color: var(--primary-cyan);
+  text-shadow: 0 0 8px var(--primary-cyan);
+}
+
+.node-icon { margin-right: 10px; font-size: 10px; transition: 0.3s; }
+.nodes-header.active .node-icon { transform: rotate(90deg); color: var(--primary-cyan); }
+.node-count { margin-left: auto; opacity: 0.5; font-size: 10px; }
+
+/* Accordion Logic */
+.nodes-list {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nodes-list.active {
+  max-height: 300px; /* Allow expansion */
+  padding-bottom: 15px;
+}
+
+/* Node Card Style */
+.node-card {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 12px;
+  text-decoration: none;
+  transition: all 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.node-card:hover {
+  background: rgba(0, 243, 255, 0.05);
+  border-color: var(--primary-cyan);
+  transform: translateX(5px);
+}
+
+/* Little blinky status light */
+.node-status {
+  width: 4px; height: 4px;
+  background: #555;
+  margin-right: 12px;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.1);
+}
+.node-card:hover .node-status {
+  background: var(--primary-cyan);
+  box-shadow: 0 0 5px var(--primary-cyan);
+}
+
+.node-content { flex: 1; }
+
+.node-title {
+  font-family: 'Orbitron';
+  font-size: 11px;
+  color: #fff;
+  letter-spacing: 1px;
+  margin-bottom: 2px;
+}
+
+.node-desc {
+  font-family: 'Rajdhani';
+  font-size: 12px;
+  color: #888;
+}
+
+.node-action {
+  font-family: 'Orbitron';
+  font-size: 9px;
+  color: var(--primary-cyan);
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: 0.3s;
+}
+
+.node-card:hover .node-action {
+  opacity: 1;
+  transform: translateX(0);
+}

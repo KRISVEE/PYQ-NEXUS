@@ -467,3 +467,64 @@ setInterval(() => {
         if(sysAudio.ctx) sysAudio.ctx.close();
     }
 }, 1000);
+
+
+
+/* =========================================
+   8. CONNECTED NODES LOGIC
+   ========================================= */
+
+const nodesToggle = document.getElementById('nodesToggle');
+const nodesList = document.getElementById('nodesList');
+
+if(nodesToggle && nodesList) {
+    
+    // Toggle Accordion
+    nodesToggle.addEventListener('click', () => {
+        const isActive = nodesList.classList.contains('active');
+        
+        if(isActive) {
+            nodesList.classList.remove('active');
+            nodesToggle.classList.remove('active');
+            sysAudio.click(); // Standard click sound for close
+        } else {
+            nodesList.classList.add('active');
+            nodesToggle.classList.add('active');
+            sysAudio.openPanel(); // Reuse "Whoosh" sound for open
+            
+            // Trigger 3D Core Pulse
+            if(typeof triggerNodePulse === 'function') triggerNodePulse();
+        }
+    });
+
+    // Node Click Effects
+    document.querySelectorAll('.node-card').forEach(node => {
+        node.addEventListener('mouseenter', () => sysAudio.hover());
+        
+        node.addEventListener('click', () => {
+            sysAudio.click();
+            // Trigger 3D Connection Effect
+            if(typeof triggerNodeConnection === 'function') triggerNodeConnection();
+        });
+    });
+}
+
+// --- NEW 3D ANIMATION TRIGGERS ---
+
+// 1. Pulse Core when opening section
+function triggerNodePulse() {
+    if(typeof gsap !== 'undefined' && typeof coreMat !== 'undefined') {
+        // Flash core Cyan
+        gsap.to(coreMat, { opacity: 0.8, duration: 0.1, yoyo: true, repeat: 1 });
+        gsap.to(core.scale, { x: 1.1, y: 1.1, z: 1.1, duration: 0.2, yoyo: true, repeat: 1 });
+    }
+}
+
+// 2. Expand Ring when clicking a node link
+function triggerNodeConnection() {
+    if(typeof gsap !== 'undefined' && typeof ring !== 'undefined') {
+        // Quick subtle expansion ring
+        gsap.fromTo(ring.scale, {x:0, y:0, z:0}, {x:1.5, y:1.5, z:1.5, duration: 0.8, ease: "power2.out"});
+        gsap.fromTo(ringMat, {opacity: 0.5}, {opacity: 0, duration: 0.8});
+    }
+}
