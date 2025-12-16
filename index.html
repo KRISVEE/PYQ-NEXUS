@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>PYQ NEXUS | Secure Access</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+
+  <div id="canvas-container"></div>
+
+  <div id="notification-zone"></div>
+
+  <div class="ui-wrapper">
+    
+    <header class="top-bar">
+      <div class="logo">PYQ <span class="highlight">NEXUS</span></div>
+      
+      <button id="profileBtn" class="sound-btn">
+        👤 OPERATOR
+      </button>
+
+      <button id="soundToggle" class="sound-btn">
+        🔊 AUDIO
+      </button>
+
+      <div class="breadcrumbs" id="breadcrumbs">
+        <span class="crumb active" data-label="College">College</span>
+        <span class="crumb" data-label="Branch">Branch</span>
+        <span class="crumb" data-label="Year">Year</span>
+        <span class="crumb" data-label="Sem">Sem</span>
+        <span class="crumb" data-label="Files">Files</span>
+      </div>
+    </header>
+
+    <main class="interaction-zone">
+      <section class="control-panel glass-card">
+        <div class="step-container" id="stepContent">
+          </div>
+        
+        <div class="action-bar">
+          <button id="backBtn" class="secondary-btn" disabled>← RETURN</button>
+          <div class="status-indicator" id="statusText">SYSTEM STANDBY</div>
+        </div>
+      </section>
+
+      <aside class="visualizer-overlay">
+        <div class="data-readout">
+          <h1 id="visualizerTitle">INITIALIZE</h1>
+          <p id="visualizerSub">Select institution to begin handshake.</p>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <div id="profile-modal" class="modal-overlay">
+    <div class="modal-card">
+      <button id="closeProfile" class="close-btn">×</button>
+      
+      <div class="profile-header">
+        <div class="sys-badge">SYS.ARCHITECT</div>
+        <h2>PRITHVI RAJ</h2>
+        <div class="sys-sub">ID: PR-07 // BUILDER // DEV</div>
+      </div>
+
+      <div class="profile-body">
+        <p class="sys-log">
+          > EXECUTING CREATIVE PROTOCOLS...<br>
+          > Building interfaces, game systems, and intelligent tools.<br>
+          > STATUS: <span class="highlight">ONLINE</span>
+        </p>
+      </div>
+
+      <div class="profile-links">
+        <a href="https://www.linkedin.com/in/prithvi-raj07/" target="_blank" class="social-link">
+          LINKEDIN_UPLINK
+        </a>
+        
+        <a href="https://github.com/KRISVEE" target="_blank" class="social-link">
+          GITHUB_REPO
+        </a>
+
+        <a href="https://x.com/Xipreneur" target="_blank" class="social-link">
+          X_SIGNAL
+        </a>
+      </div>
+      
+      <div class="profile-footer">
+        NODE CONNECTED • LATENCY: 12ms
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
