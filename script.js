@@ -1,6 +1,4 @@
-/* =========================================
-   1. DATABASE (Your Links)
-   ========================================= */
+
 const db = {
     JUT: {
         name: "JUT PYQ",
@@ -40,9 +38,7 @@ const db = {
     }
 };
 
-/* =========================================
-   2. SYSTEM AUDIO (Synthesizer - No Files)
-   ========================================= */
+
 const sysAudio = {
     ctx: null,
     enabled: true,
@@ -115,9 +111,7 @@ const sysAudio = {
     achieveComplete: function() { this.playChord([261, 329, 392, 523, 1046]); }
 };
 
-/* =========================================
-   3. ACHIEVEMENT & NOTIFICATION
-   ========================================= */
+
 const achievements = {
     list: ['init','college','branch','year','sem','file'],
     unlock: function(id) {
@@ -147,9 +141,7 @@ const achievements = {
     }
 };
 
-/* =========================================
-   4. UI LOGIC (Wizard Flow)
-   ========================================= */
+
 let currentStep = 1;
 let selections = { college: null, branch: null, year: null, semester: null };
 const stepContainer = document.getElementById('stepContent');
@@ -227,7 +219,7 @@ function renderStep(step) {
         });
         updateVisualizer(selections.year, "Narrowing data scope...");
     }
-    // --- STEP 5: DOWNLOAD (With 1.5s Animation Delay) ---
+    
     else if (step === 5) {
         titleText = "Download Files";
         const subjects = db[selections.college].branches[selections.branch][selections.year][selections.semester];
@@ -318,9 +310,6 @@ soundBtn.addEventListener('click', () => {
     }
 });
 
-/* =========================================
-   5. OPERATOR PROFILE (About Me Modal)
-   ========================================= */
 const profileBtn = document.getElementById('profileBtn');
 const profileModal = document.getElementById('profile-modal');
 const closeProfile = document.getElementById('closeProfile');
@@ -354,9 +343,6 @@ if(profileBtn && profileModal) {
     });
 }
 
-/* =========================================
-   6. THREE.JS VISUALIZER (Mobile Optimized)
-   ========================================= */
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
@@ -435,9 +421,7 @@ window.addEventListener('resize', () => {
 // Start App
 renderStep(1);
 
-/* =========================================
-   7. SECURITY PROTOCOL (Chala Ja BSDK)
-   ========================================= */
+
 
 // 1. Block Right Click
 document.addEventListener('contextmenu', (e) => { e.preventDefault(); alert("⚠️ SYSTEM ALERT: Restricted Access!"); });
@@ -469,10 +453,6 @@ setInterval(() => {
 }, 1000);
 
 
-
-/* =========================================
-   8. CONNECTED NODES LOGIC
-   ========================================= */
 
 const nodesToggle = document.getElementById('nodesToggle');
 const nodesList = document.getElementById('nodesList');
@@ -509,7 +489,7 @@ if(nodesToggle && nodesList) {
     });
 }
 
-// --- NEW 3D ANIMATION TRIGGERS ---
+
 
 // 1. Pulse Core when opening section
 function triggerNodePulse() {
@@ -527,4 +507,5 @@ function triggerNodeConnection() {
         gsap.fromTo(ring.scale, {x:0, y:0, z:0}, {x:1.5, y:1.5, z:1.5, duration: 0.8, ease: "power2.out"});
         gsap.fromTo(ringMat, {opacity: 0.5}, {opacity: 0, duration: 0.8});
     }
+
 }
